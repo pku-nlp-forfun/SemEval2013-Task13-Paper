@@ -1,6 +1,8 @@
 \section{Experiment}
 \label{sec:experiment}
 
+\subsection*{TopN Result}
+
 \subsubsection*{Strict TopN Approach with Naive Adding}
 
 In this experiment, we will use the most naive way to construct sentence embedding but try to see which N and which similarity is better. (Table~\ref{tab:different_similarity})
@@ -13,7 +15,15 @@ In this experiment, we test the combination of strict or generalized top N and u
 
 \input{figures/different_sentence_embedding.tex}
 
-\subsubsection*{Best Result}
+\subsection*{BiLM Result}
+
+\subsubsection*{Different Language Model with Different Clustering Target}
+
+In this experiment, we will try to replace the original ELMo language model and see the effect of using different clustering target. (Table~\ref{tab:bilm_result})
+
+\input{figures/bilm_result.tex}
+
+\subsection*{Best Result}
 
 Following will list the best result among our models and the best model in the 2013 competition. (Table~\ref{tab:best_result})
 

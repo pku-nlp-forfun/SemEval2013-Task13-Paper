@@ -1,0 +1,26 @@
+\begin{table}[htbp!]
+    \centering
+    \begin{tabular}{llccc}
+    \toprule
+        \multicolumn{2}{c}{Experiment}   & \multicolumn{3}{c}{WSI Metrics}           \\
+    \midrule
+        Language Model     & Cluster     & Fuzzy NMI     & Fuzzy B-Cubed  & Average  \\
+    \midrule
+        ELMo               & one-hot     & 9.28          & 58.70          & 23.34    \\
+        ELMo               & TF-IDF      & 11.06         & 57.72          & 25.27    \\
+        ELMo               & BERT        & 2.65          & 54.34          & 12.00    \\
+        ELMo               & GloVe       & 8.28          & 60.90          & 22.45    \\
+        ELMo               & fastText    & 7.40          & 61.39          & 21.32    \\
+        GloVe              & one-hot     & 8.66          & 59.21          & 22.64    \\
+        GloVe              & TF-IDF      & 10.69         & 57.68          & 24.83    \\
+        GloVe              & GloVe       & 8.08          & 60.88          & 22.18    \\
+        GloVe              & fastText    & 6.49          & 61.08          & 19.91    \\
+        fastText           & one-hot     & 8.78          & 58.59          & 22.68    \\
+        fastText           & TF-IDF      & 10.82         & 57.34          & 24.90    \\
+        fastText           & GloVe       & 7.79          & 60.52          & 21.72    \\
+        fastText           & fastText    & 7.08          & 61.11          & 20.80    \\
+    \bottomrule
+    \end{tabular}
+\caption{Comparison using different language model and using different clustering target}
+\label{tab:bilm_result}
+\end{table} 
