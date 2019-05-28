@@ -1,0 +1,51 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage{mathptmx}
+
+\usepackage{geometry}
+\geometry{a4paper, scale=0.8}
+
+% For prettier tables
+% replace \hline with \toprule, \midrule and \bottomrule
+\usepackage{booktabs}
+
+% For list spacing
+\usepackage{enumitem}
+\setlist{noitemsep}
+
+% For multi-column
+\usepackage{multicol}
+\setlength{\columnsep}{1cm}
+
+% For graphic/figure
+\usepackage{graphicx}
+
+\title{\textbf{Multi-fusion on SemEval-2013 Task13: \\ Word Sense Induction}}
+\author{\textbf{Hui-Qiang Jiang} \quad \textbf{Da-Wei Lee} \\
+Peking University \\
+{\tt \{1801210840,1701210963\}@pku.edu.cn}}
+\date{May 28, 2019}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+  \input{sections/abstract.tex}
+\end{abstract}
+
+\begin{multicols}{2}
+
+\input{sections/intro.tex}
+
+\input{sections/approach.tex}
+
+\input{sections/experiment.tex}
+
+\input{sections/conclusion.tex}
+
+\end{multicols}
+
+\bibliographystyle{acm}
+\bibliography{citedbibtex}
+
+\end{document}
