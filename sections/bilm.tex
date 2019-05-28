@@ -16,6 +16,14 @@ The way of choose substitute word is base on reusing Language Model ELMo.
 In addition to that work, we also use a skill to get unequal length similarity meaning substitute word.
 The most similarity substitute word will be cluster to several clusters. 
 
+\begin{figure*}[ht]
+    \begin{center}
+    \includegraphics[width=0.85\textwidth]{figures/BiLM.pdf}
+    \end{center}
+    \caption{The overview of model structure}
+    \label{fig:overall_model}
+\end{figure*}
+
 \paragraph{Substitute Vectors}
 Language Model is an intuitive way we to get the meaning of the word from context word from sample sentence.
 But for the most time, directly replace the word by word embedding is meaning amplification cluster distance.
