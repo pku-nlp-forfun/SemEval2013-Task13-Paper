@@ -7,10 +7,10 @@ And we only match the word meaning from WordNet. It has some deviation between a
 For the more, In our method, the rule of division top-N is the decision by practical experience. It somethings don't work well.
 
 For a naive mind, we can change the paragraph grained to the word grained and then clustering word meaning from sample sentences.
-It means that we should build a more fine-grained from around word rather than common word embedding, like ELMo, Bert.
+It means that we should build a more fine-grained from around word rather than common word embedding, like ELMo~\cite{Peters:2018}, Bert.
 But if we directly replace word to context word embedding, It's too much noise in the word embedding spacing between same meaning word.
 It causes that direct cluster ELMo embedding vector don't better than other pre-train word embedding.
-Refer the Bask... Work. We using substitute vectors instead of directing using word embedding producing by ELMo.
+Refer the Bask's Work~\cite{baskaya2013ai}. We using substitute vectors instead of directing using word embedding producing by ELMo.
 It's mean that we choose some word which is the similarity to the meaning of this word in their sentence.
 The way of choose substitute word is base on reusing Language Model ELMo.
 In addition to that work, we also use a skill to get unequal length similarity meaning substitute word.
@@ -20,7 +20,7 @@ The most similarity substitute word will be cluster to several clusters.
 Language Model is an intuitive way we to get the meaning of the word from context word from sample sentence.
 But for the most time, directly replace the word by word embedding is meaning amplification cluster distance.
 It has low robustness when the word vector causing by Language Model have noise.
-So refer to the work of XXXX, we use BiLM to change word vector to a similar word.
+So refer to the work of Neural biLM~\cite{amrami-goldberg-2018-word}, we use BiLM to change word vector to a similar word.
 This way reduce the word noise meaning, and amplification the important meaning.
 And in the actual, We random choose most similarity word base Language Model weight dot local word vector.
 By multi choosing, we get the most similarity word no matter what the num of word most similarity.
