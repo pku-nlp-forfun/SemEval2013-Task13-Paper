@@ -18,25 +18,12 @@ In this experiment, we test the combination of strict or generalized top N and u
 
 \subsection*{BiLM Result}
 
-\subsubsection*{Different Language Model with Different Clustering Target}
-
-In this experiment, we will try to replace the original ELMo language model and see the effect of using different clustering target. (Table~\ref{tab:bilm_result})
-
-\input{figures/bilm_result.tex}
-
-\subsection*{Best Result}
-
-Following will list the best result among our models and the best model in the 2013 competition. (Table~\ref{tab:best_result})
-
-\input{figures/best_result.tex}
-
-
 \subsubsection*{BiLM, Substitute Vectors, Cluster}
 Refer to figure 3, We use BiLM, Substitute Vectors, Cluster to extract multi-sense or meanings word which is ambiguation.
 In our work, We choose ELMo, FastText, Glove as the BiLM model.
 The ELMo pre-training model is from allennlp.
-The fastText pre-training model is from   fasttext.cc.
-The Glove pre-training model is from  Stanford. 
+The fastText pre-training model is from fasttext.cc.
+The Glove\cite{pennington2014glove} pre-training model is from Stanford. 
 
 Before the clustering processing, we need a representatives method to extract substitute word meaning.
 In this processing, we test for one-hot, TF-IDF, FastText, Glove, Bert, ELMo.
@@ -48,8 +35,13 @@ In backward substitute, we choose the random choose frequent is 4 words a group,
 And the cluster num is 7.
 We use agglomerative clustering (cosine distance, average linkage) and induce a fixed number of clusters.
 
+In this experiment, we will try to replace the original ELMo language model and see the effect of using different clustering target. (Table~\ref{tab:bilm_result})
+
+\input{figures/bilm_result.tex}
+
 From the experiment result, We found ELMo + TF-IDF is the best combination in our work.
 Treating each representative as a document, TF-IDF reduces the weight of uninformative words shared by many representatives.
+
 
 \subsubsection*{Test for Clustering Num}
 
@@ -59,3 +51,10 @@ And We also test for the cluster num.
 And we found in this DataSet, 7 clusterings is the best params.
 For more thought, when we defined the cluster num, It's a similarity to the top-N num.
 It's decided by the data feature.
+
+\subsection*{Best Result}
+
+Following will list the best result among our models and the best model in the 2013 competition. (Table~\ref{tab:best_result})
+
+\input{figures/best_result.tex}
+
