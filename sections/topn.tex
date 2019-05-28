@@ -1,2 +1,70 @@
 \subsection{TopN}
 \label{sec:topn}
+
+The naive solution to this competition is to predict/induce one or a few word sense for each instance of all cases. The thought is simply that for each sentence of an instance, we try to calculate its similarity of all the meaning in WordNet 3.1 by transforming them into sentence embedding.
+
+There are some key part of this approach
+
+\begin{itemize}
+    \item The choice of the embedding
+    \item How to construct the sentence embedding
+    \item Determine the similarity between the senses
+    \item Selecting the top N results
+\end{itemize}
+
+And here is the overall procedure of the TopN approach
+
+\begin{enumerate}
+    \item Use the definitions of the word from WordNet (e.g. get the meanings of ADD in VERB)
+    \item Transfer sentences into Vector (Dataset Instances and WordNet definitions)
+    \item Calculate the similarity of each definition sentences with the word
+    \item For each test instance export top N possible sense and using the similarities as weights
+\end{enumerate}
+
+\subsubsection*{Embedding}
+\label{sec:embedding}
+
+We've tried to use the fastText pre-trained embedding~\cite{mikolov2018advances}, it's a 300 dimension embedding trained on Wikipedia 2017, UMBC webbase corpus and statmt.org news dataset.
+
+And we've also tried to use BERT~\cite{devlin2018bert} pre-trained model to generate embedding. Because we were using the BERT-Base model, the output dimension of embedding is 768.
+
+\subsubsection*{Sentence Embedding}
+\label{sec:sentence_embedding}
+
+To construct the word embedding into sentence embedding, we've tried the following methods.
+
+\begin{itemize}
+    \item Naive Adding
+    \item Naive Adding with Normalization with sentence length
+    \item Padding the sentence to max sentence length with the “average embedding”
+\end{itemize}
+
+Among them, the second one which normalized the summation of the embeddings has the best result.
+
+\subsubsection*{Similarity}
+\label{sec:similarity}
+
+To determine the similarity between the WordNet synset definition between the instances of the dataset.
+
+We've tried the following distance calculation: (we use its inverse as similarity)
+
+\begin{itemize}
+    \item Cosine
+    \item Euclidean
+    \item Minkowski
+\end{itemize}
+
+And found that cosine will generate the best result. Thus in the rest of the experiment, we'll use cosine similarity.
+
+We've also applied a trick on the TopN result. For an example of the top similarities is [7, 6, 6.5, 5, 4] and we want to get the Top 3 result. Initially, we'll get [7, 6, 6.5]. But we'll minus the Top N+1's value that makes the result become [2, 1, 0.5], which greater the ratio (importance) between them. And we get the better result after this.
+
+\subsubsection*{Strict and Generalized Top N}
+\label{sec:strict_and_generalized_top_n}
+
+Sometimes a word could have only one sense or multiple sense, so we've tried to predict the sense with a threshold that the results amount will differ.
+
+So the Generalized Top N model means the maximum prediction will be N but can be less than N but at least one.
+
+But in the end, we found that for each generalized version Top N will be about 0.X less than the strict one. We were guessing this is because the prediction order of the similarities was already wrong. So when we strip the result with a threshold. We may get rid of the correct one but with lower weight. This will lower out prediction. 
+
+And finally, we found that, when N = 2, we'll get the best result.
