@@ -1,4 +1,43 @@
 \section{Introduction}
 \label{sec:introduction}
 
-SemEval-2013 Task 13~\cite{jurgens2013semeval} has three subtask
+SemEval-2013 Task 13~\cite{jurgens2013semeval} has three subtasks (but the description link of each subtask has lost)
+
+\begin{enumerate}
+    \item Non-graded Word Sense Induction Subtask
+    \item Graded Word Sense Induction Subtask
+    \item Lexical Substitution SubTask
+\end{enumerate}
+
+In this paper, we will focus on the Graded WSI Subtask.
+
+\subsection*{Graded WSI}
+
+Graded WSI means that for each word sense we will assign a weight for it to represent how much it "means" that sense.
+
+For an example of a gold key: add.v add.v.13 add\%2:32:01::/4 add\%2:30:00::/2
+
+\begin{itemize}
+    \item Lemma: add
+    \item POS: verb
+    \item Instance: 13
+    \item Meanings
+        \begin{enumerate}
+            \item add\%2:32:01::/4
+                \begin{itemize}
+                    \item Definition: state or say further
+                    \item Weight: 4
+                \end{itemize}
+            \item add\%2:30:00::/2
+                \begin{itemize}
+                    \item Definition: make an addition (to); join or combine or unite with others; increase the quality, quantity, size or scope of
+                    \item Weight: 2
+                \end{itemize}
+        \end{enumerate}
+\end{itemize}
+
+In this subtask, we will attempt in two different ways. First is clustering between the sense of WordNet and the instances, just like the gold key shown above. Another one is clustering between instances themselves.
+
+\subsection*{Evaluation Metrics}
+
+There were five evaluation metrics given by the host. But because we were focused on the WSI subtask, so we will only try to improve the WSI metrics, that is Fuzzy NMI, Fuzzy B-Cubed and their geometric mean.
