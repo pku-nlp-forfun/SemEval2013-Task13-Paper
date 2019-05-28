@@ -1,0 +1,29 @@
+\begin{table}[htbp!]
+    \centering
+    \begin{tabular}{llccc}
+    \toprule
+        \multicolumn{2}{c}{Experiment}  & \multicolumn{3}{c}{WSI Metrics}           \\
+    \midrule
+        Model       & Similarity        & Fuzzy NMI     & Fuzzy B-Cubed  & Average  \\
+    \midrule
+        Top 1       & Cosine            & 2.81          & 50.22          & 11.89    \\
+        Top 2       & Cosine            & 8.56          & 52.10          & 21.12    \\
+        Top 3       & Cosine            & 7.15          & 42.87          & 17.51    \\
+        Top 4       & Cosine            & 6.61          & 32.07          & 14.56    \\
+        Top 5       & Cosine            & 5.92          & 24.80          & 12.11    \\
+        Top 1       & Euclidean         & 3.63          & 47.78          & 13.17    \\
+        Top 2       & Euclidean         & 7.87          & 46.06          & 19.04    \\
+        Top 3       & Euclidean         & 6.97          & 40.36          & 16.77    \\
+        Top 4       & Euclidean         & 6.46          & 34.25          & 14.87    \\
+        Top 5       & Euclidean         & 6.15          & 28.33          & 13.20    \\
+        Top 1       & Minkowski         & 3.63          & 47.78          & 13.17    \\
+        Top 2       & Minkowski         & 7.87          & 46.06          & 19.04    \\
+        Top 3       & Minkowski         & 6.97          & 40.36          & 16.77    \\
+        Top 4       & Minkowski         & 6.46          & 34.25          & 14.87    \\
+        Top 5       & Minkowski         & 6.15          & 28.33          & 13.20    \\
+        Top 2 (BERT)& Cosine            & 6.74          & 46.78          & 17.76    \\
+    \bottomrule
+    \end{tabular}
+\caption{Comparison of different Strict Top N model and different similarity with fastText embedding}
+\label{tab:different_similarity}
+\end{table}
