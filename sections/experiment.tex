@@ -9,6 +9,7 @@ In this experiment, we will use the most naive way to construct sentence embeddi
 
 \input{figures/different_similarity.tex}
 
+
 \subsubsection*{Different TopN Approach with Different Sentence Embedding}
 
 In this experiment, we test the combination of strict or generalized top N and using which sentence embedding. And shows the best result of each setting. (Table~\ref{tab:different_sentence_embedding})
@@ -28,3 +29,33 @@ In this experiment, we will try to replace the original ELMo language model and 
 Following will list the best result among our models and the best model in the 2013 competition. (Table~\ref{tab:best_result})
 
 \input{figures/best_result.tex}
+
+
+\subsubsection*{BiLM, Substitute Vectors, Cluster}
+Refer to figure 3, We use BiLM, Substitute Vectors, Cluster to extract multi-sense or meanings word which is ambiguation.
+In our work, We choose ELMo, FastText, Glove as the BiLM model.
+The ELMo pre-training model is from allennlp.
+The fastText pre-training model is from   fasttext.cc.
+The Glove pre-training model is from  Stanford. 
+
+Before the clustering processing, we need a representatives method to extract substitute word meaning.
+In this processing, we test for one-hot, TF-IDF, FastText, Glove, Bert, ELMo.
+we used \emph{sklearn} for both one-hot, TF-IDF weighting and clustering.
+The Bert model is running in a 12-head multi-transformer model. 
+And the hidden state as the out params.
+
+In backward substitute, we choose the random choose frequent is 4 words a group, and every sample sentence we random sampling for  20 times.
+And the cluster num is 7.
+We use agglomerative clustering (cosine distance, average linkage) and induce a fixed number of clusters.
+
+From the experiment result, We found ELMo + TF-IDF is the best combination in our work.
+Treating each representative as a document, TF-IDF reduces the weight of uninformative words shared by many representatives.
+
+\subsubsection*{Test for Clustering Num}
+
+\input{figures/cluster_num.tex}
+
+And We also test for the cluster num.
+And we found in this DataSet, 7 clusterings is the best params.
+For more thought, when we defined the cluster num, It's a similarity to the top-N num.
+It's decided by the data feature.
