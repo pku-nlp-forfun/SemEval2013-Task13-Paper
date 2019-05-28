@@ -1,0 +1,17 @@
+\begin{table}[htbp!]
+    \centering
+    \begin{tabular}{llccc}
+    \toprule
+        \multicolumn{2}{c}{Experiment}          & \multicolumn{3}{c}{WSI Metrics}           \\
+    \midrule
+        Model              & Sentence Embedding & Fuzzy NMI     & Fuzzy B-Cubed  & Average  \\
+    \midrule
+        Strict Top 2       & Naive Adding       & 8.56          & 52.10          & 21.12    \\
+        Generalized Top 2  & Naive Adding       & 8.35          & 52.40          & 20.92    \\
+        Strict Top 2       & Normalized Adding  & \bf8.92       & \bf52.51       & \bf21.64 \\
+        Strict Top 2       & Normalized Padding & 8.55          & 46.58          & 19.95    \\
+    \bottomrule
+    \end{tabular}
+\caption{Comparison between different Top N model and different sentence embedding}
+\label{tab:different_sentence_embedding}
+\end{table}
